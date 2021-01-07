@@ -39,7 +39,7 @@ public class EmployeeController {
         //get the employee from the service
         Employee theEmployee = employeeService.findById(theId);
         //set employee as a model attribute to pre-populate the form
-        model.addAttribute("employee",theEmployee);
+        model.addAttribute("employee", theEmployee);
 
         //send out our form
         return "employees/employee-form";
@@ -55,6 +55,13 @@ public class EmployeeController {
 
 
     }
+    @GetMapping("/delete")
+    public String deleteById(@RequestParam("employeeId")int theId){
+        employeeService.delete(theId);
+
+        return "redirect:/employees/list";
+    }
+
 
 
 }
